@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import useFetchName from "./hooks/useFetchName";
 
 function App() {

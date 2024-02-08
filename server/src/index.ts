@@ -2,7 +2,6 @@ require("dotenv").config();
 import express, { Request, Response } from "express";
 import bodyParser from "body-parser";
 import cors from "cors";
-import Errors from "undici-types/errors";
 
 const app = express();
 const PORT = process.env.LOCALPORT;
@@ -23,10 +22,10 @@ app.get(
     ) => {
         try {
             const name = "Aryan";
-            res.status(200).json({ name });
+            res.status(200).send({ name });
         } catch (error: any) {
             const message = error.message;
-            res.status(500).json({ message });
+            res.status(500).send({ message });
         }
     }
 );

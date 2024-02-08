@@ -1,7 +1,6 @@
-import useFetchName from "./hooks/useFetchName";
-
 function App() {
-    const name = useFetchName();
+    // Add Routing through tanstack router
+    const name = "Aryan";
 
     return <>{name}</>;
 }

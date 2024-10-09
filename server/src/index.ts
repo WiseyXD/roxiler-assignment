@@ -1,35 +1,20 @@
-require("dotenv").config();
-import express, { Request, Response } from "express";
-import bodyParser from "body-parser";
-import cors from "cors";
+import express from 'express';
+import dotenv from 'dotenv';
+import connectDB from './config/db';
+import transactionRoutes from './routes/index';
+
+dotenv.config();
 
 const app = express();
-const PORT = process.env.LOCALPORT || 8000;
 
-app.use(cors());
-app.use(bodyParser.json());
+app.use(express.json());
 
-app.get(
-    "/",
-    (
-        req: Request<
-            { params: string },
-            {},
-            { body: string },
-            { query: string }
-        >,
-        res: Response
-    ) => {
-        try {
-            const name = "Aryan";
-            res.status(200).send({ name });
-        } catch (error: any) {
-            const message = error.message;
-            res.status(500).send({ message });
-        }
-    }
-);
+connectDB();
+
+app.use('/api', transactionRoutes);
+
+const PORT = process.env.PORT || 5000;
 
 app.listen(PORT, () => {
-    console.log("Server is Listening at port " + PORT);
+    console.log(`Server running on port ${PORT}`);
 });

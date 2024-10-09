@@ -1,1 +1,1 @@
-This is a MERN Boilerplate using BUN as a Package Manager
+This is a MERN Boilerplate using BUN/NPM as a Package Manager
